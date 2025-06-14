@@ -557,6 +557,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 	 * @see #setContextConfigLocation
 	 */
 	protected WebApplicationContext initWebApplicationContext() {
+		// todo-dzy : 获取父级spring容器 如果没有设置父级容器就是空
 		WebApplicationContext rootContext =
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		WebApplicationContext wac = null;
@@ -584,7 +585,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 		}
 		if (wac == null) {
 			// No context instance is defined for this servlet -> create a local one
-			// todo-dzy :创建spring容器
+			// todo-dzy :创建spring容器 子容器
 			wac = createWebApplicationContext(rootContext);
 		}
 
@@ -658,6 +659,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 				(ConfigurableWebApplicationContext) BeanUtils.instantiateClass(contextClass);
 		// todo-dzy :设置环境变量
 		wac.setEnvironment(getEnvironment());
+		// todo-dzy :绑定父子容器关系
 		wac.setParent(parent);
 		// todo-dzy :设置配置文件
 		String configLocation = getContextConfigLocation();
