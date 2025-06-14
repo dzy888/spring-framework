@@ -143,6 +143,7 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 	 * @throws ServletException if bean properties are invalid (or required
 	 * properties are missing), or if subclass initialization fails.
 	 */
+	// todo-dzy :tomcat调用的init方法在此
 	@Override
 	public final void init() throws ServletException {
 
@@ -163,7 +164,7 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 				throw ex;
 			}
 		}
-
+		// todo-dzy :spring容器初始化
 		// Let subclasses do whatever initialization they like.
 		initServletBean();
 	}

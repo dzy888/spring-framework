@@ -153,6 +153,7 @@ import org.springframework.web.util.WebUtils;
  * @see org.springframework.web.servlet.mvc.Controller
  * @see org.springframework.web.context.ContextLoaderListener
  */
+// todo-dzy :springmvc的入口 最终继承 servlet类 tomcat会调用servlet类的init方法最终实现spring容器的初始化
 @SuppressWarnings("serial")
 public class DispatcherServlet extends FrameworkServlet {
 
